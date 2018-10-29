@@ -105,7 +105,7 @@
 
 	<!-- Retrieve the information of all items of a particular metadata type -->
     <target name="listMetadata">
-      <sf:listMetadata username="${sf.username}" password="${sf.password}" sessionId="${sf.sessionId}" serverurl="${sf.serverurl}" metadataType="${sf.metadataType}" />
+      <sf:listMetadata username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" metadataType="${sf.metadataType}" />
     </target>
 	
 	<!-- Retrieve the changesets to changeset folder -->
