@@ -32,7 +32,7 @@ then
         echo Found previous SHA $PREVRSA
 
         # Backup existing Package.xml
-        cd $WSPACE/src
+        cd $WSPACE/sample
         echo changing directoy to $WSPACE
         cp package.xml{,.bak} &&
         echo Backing up package.xml to package.xml.bak &&
@@ -44,7 +44,7 @@ EOF
         echo ===PKGXML===
         echo $NEWPKGXML
         echo Creating new package.xml
-        echo $NEWPKGXML > $WSPACE/src/package.xml
+        echo $NEWPKGXML > $WSPACE/sample/retrieveUnpackaged/package.xml
 
         for CFILE in `git diff-tree --no-commit-id --name-only -r $LCOMMIT $PREVRSA`
         do
@@ -73,31 +73,31 @@ EOF
                         ENTITY="${ENTITY%.*}"
                         echo ENTITY NAME: $ENTITY
 
-                        if grep -Fq "$TYPENAME" $WSPACE/src/package.xml
+                        if grep -Fq "$TYPENAME" $WSPACE/sample/retrieveUnpackaged/package.xml
                         then
                                 echo Generating new member for $ENTITY
-                                xmlstarlet ed -L -s "/Package/types[name='$TYPENAME']" -t elem -n members -v "$ENTITY" $WSPACE/src/package.xml
+                                xmlstarlet ed -L -s "/Package/types[name='$TYPENAME']" -t elem -n members -v "$ENTITY" $WSPACE/sample/retrieveUnpackaged/package.xml
                         else
                                 echo Generating new $TYPENAME type
-                                xmlstarlet ed -L -s /Package -t elem -n types -v "" $WSPACE/src/package.xml
-                                xmlstarlet ed -L -s '/Package/types[not(*)]' -t elem -n name -v "$TYPENAME" $WSPACE/src/package.xml
+                                xmlstarlet ed -L -s /Package -t elem -n types -v "" $WSPACE/sample/retrieveUnpackaged/package.xml
+                                xmlstarlet ed -L -s '/Package/types[not(*)]' -t elem -n name -v "$TYPENAME" $WSPACE/sample/retrieveUnpackaged/package.xml
                                 echo Generating new member for $ENTITY
-                                xmlstarlet ed -L -s "/Package/types[name='$TYPENAME']" -t elem -n members -v "$ENTITY" $WSPACE/src/package.xml
+                                xmlstarlet ed -L -s "/Package/types[name='$TYPENAME']" -t elem -n members -v "$ENTITY" $WSPACE/sample/retrieveUnpackaged/package.xml
                         fi
                 else
                         echo ERROR: UNKNOWN FILE TYPE $CFILE
                 fi
                 echo ====UPDATED PACKAGE.XML====
-                cat $WSPACE/src/package.xml
+                cat $WSPACE/sample/retrieveUnpackaged/package.xml
         done
         echo Saving last RSA Commit
         echo $LCOMMIT > /var/lib/jenkins/workspace/lastcommit/$BNAME.txt
         echo Cleaning up Package.xml
-        xmlstarlet ed -L -s /Package -t elem -n version -v "27.0" $WSPACE/src/package.xml
-        xmlstarlet ed -L -i /Package -t attr -n xmlns -v "http://soap.sforce.com/2006/04/metadata" $WSPACE/src/package.xml
+        xmlstarlet ed -L -s /Package -t elem -n version -v "27.0" $WSPACE/sample/retrieveUnpackaged/package.xml
+        xmlstarlet ed -L -i /Package -t attr -n xmlns -v "http://soap.sforce.com/2006/04/metadata" $WSPACE/sample/retrieveUnpackaged/package.xml
 
         echo ====FINAL PACKAGE.XML=====
-        cat $WSPACE/src/package.xml
+        cat $WSPACE/sample/retrieveUnpackaged/package.xml
 else
         echo No RSA found, default Package.xml will be used
         echo Creating new list commit file
