@@ -105,18 +105,12 @@
 
 	<!-- Retrieve the information of all items of a particular metadata type -->
     <target name="listMetadata">
-      <sf:listMetadata username="${sf.username}" password="${sf.password}" sessionId="${sf.sessionId}" serverurl="${sf.serverurl}" metadataType="${sf.metadataType}"/>
+      <sf:listMetadata username="${sf.username}" password="${sf.password}" sessionId="${sf.sessionId}" serverurl="${sf.serverurl}" metadataType="${sf.metadataType}" retrieveTarget="changesetfolder" packageNames="changesetname" />
     </target>
 	
 	<!-- Retrieve the changesets to changeset folder -->
     <target name="retrieveChangeset"> 
-      <mkdir="changesetfolder"> 
-      <sf:retrieve 
-         username="${sf.username}" 
-         password="${sf.password}" 
-         serverurl="${sf.serverurl}" 
-         retrieveTarget="changesetfolder" 
-         packageNames="changesetname" /> 
+      <sf:retrieveChangeset username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" metadataType="${sf.metadataType}"/>
     </target>
 
 	<!-- Retrieve the information on all supported metadata type -->
