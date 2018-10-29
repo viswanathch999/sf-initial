@@ -109,7 +109,8 @@
     </target>
 	
 	<!-- Retrieve the changesets to changeset folder -->
-    <target name="changesetfolder">
+    <target name="retrieveChangeset">
+      <mkdir="changesetfolder">
       <sf:changesetfolder username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" metadataType="${sf.metadataType} retrieveTarget="changesetfolder" packageNames="changesetname"/>
     </target>
 
