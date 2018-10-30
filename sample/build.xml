@@ -7,9 +7,11 @@
          so unset values are treated as empty. Without this, ant expressions such as ${sf.username}
          will be treated literally.
     -->
-    <condition property="sf.username" value="vchereddy@ypo.org.poc1"> <not> <isset property="sf.username"/> </not> </condition>
-    <condition property="sf.password" value="Qentelli@123eNSMU5VEHdI7ZQVuyZFqDtdb"> <not> <isset property="sf.password"/> </not> </condition>
-    
+    <condition property="sf1.username" value="vchereddy@ypo.org.poc1"> <not> <isset property="sf1.username"/> </not> </condition>
+    <condition property="sf1.password" value="Qentelli@123TatR8gNVBis4JfYf2UYKv41Dk"> <not> <isset property="sf1.password"/> </not> </condition>
+    <condition property="sf2.username" value="vchereddy@ypo.org.poc2"> <not> <isset property="sf2.username"/> </not> </condition>
+    <condition property="sf2.password" value="Qentelli@1231kdenDnaX1XAA0LrFQ7Sa98uX"> <not> <isset property="sf2.password"/> </not> </condition>   
+	
     <taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
         <classpath>
             <pathelement location="../ant-salesforce.jar" />        	
@@ -45,7 +47,7 @@
 
     <!-- Deploy the unpackaged set of metadata retrieved with retrieveUnpackaged and run tests in this organization's namespace only-->
     <target name="deployUnpackaged">
-      <sf:deploy username="${sf.username}" password="${sf.password}" sessionId="${sf.sessionId}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="retrieveUnpackaged" rollbackOnError="true"/>
+      <sf:deploy username="${sf2.username}" password="${sf2.password}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="retrieveUnpackaged" rollbackOnError="true"/>
     </target>
 
     <!-- Deploy a zip of metadata files to the org -->
@@ -56,7 +58,7 @@
     <!-- Shows deploying code & running tests for code in directory -->
     <target name="deployCode">
       <!-- Upload the contents of the "codepkg" directory, running the tests for just 1 class -->
-      <sf:deploy username="${sf.username}" password="${sf.password}" sessionId="${sf.sessionId}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="codepkg" testLevel="RunSpecifiedTests" rollbackOnError="true">
+      <sf:deploy username="${sf2.username}" password="${sf2.password}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="codepkg" testLevel="RunSpecifiedTests" rollbackOnError="true">
       	 <runTest>SampleDeployClass</runTest> 
       </sf:deploy>
     </target>
