@@ -32,7 +32,7 @@
     <target name="retrieveUnpackaged">
       <mkdir dir="retrieveUnpackaged"/>
       <!-- Retrieve the contents into another directory -->
-      <sf:retrieve username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" retrieveTarget="retrieveUnpackaged" unpackaged="unpackaged/package.xml"/>
+      <sf:retrieve username="${sf1.username}" password="${sf1.password}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" retrieveTarget="retrieveUnpackaged" unpackaged="unpackaged/package.xml"/>
     </target>
 
     <!-- Retrieve all the items of a particular metadata type -->
