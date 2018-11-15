@@ -7,10 +7,10 @@
          so unset values are treated as empty. Without this, ant expressions such as ${sf.username}
          will be treated literally.
     -->
-    <condition property="sf1.username" value="viswanathchereddy123@gmail.com.envi1"> <not> <isset property="sf1.username"/> </not> </condition>
-    <condition property="sf1.password" value="Qentelli@456Wh4EfjlN3g1LVK5WqZ1HTASDv"> <not> <isset property="sf1.password"/> </not> </condition>
-    <condition property="sf2.username" value="viswanathchereddy123@gmail.com.envi2"> <not> <isset property="sf2.username"/> </not> </condition>
-    <condition property="sf2.password" value="Qentelli@456bgH6ccnzAX5x3tTm9tu5Ok0jh"> <not> <isset property="sf2.password"/> </not> </condition>   
+    <condition property="sf1.username" value="viswanathchereddy-sbku@force.com.qentelli1"> <not> <isset property="sf1.username"/> </not> </condition>
+    <condition property="sf1.password" value="Qentelli@123CzQtX6Xb9eBTzMIkvXDyCqQJ"> <not> <isset property="sf1.password"/> </not> </condition>
+    <condition property="sf2.username" value="viswanathchereddy-sbku@force.com.qentelli2"> <not> <isset property="sf2.username"/> </not> </condition>
+    <condition property="sf2.password" value="Qentelli@123f8uus8S4lgF2zwyYkmCvpiM9z"> <not> <isset property="sf2.password"/> </not> </condition>   
 	
     <taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
         <classpath>
