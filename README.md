@@ -1,1 +1,1 @@
-# sf-initial repo test for checkout for all
+# sf-initial repo for test
